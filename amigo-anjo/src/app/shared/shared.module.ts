@@ -2,13 +2,19 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
-import { SidenavComponent } from './components/sidenav/sidenav.component';
-import { HeaderComponent } from './components/header/header.component';
 
 import { MatButtonModule, MatIconModule } from '@angular/material';
 
-import { ApiService } from './services/api/api.service';
-import { DomService } from './services/dom/dom.service';
+import {
+  SidenavComponent,
+  HeaderComponent
+} from './components';
+
+import {
+  ApiService,
+  DomService,
+  SidenavService
+} from './services';
 
 
 
@@ -33,6 +39,7 @@ export class SharedModule {
       providers: [
         ApiService,
         DomService,
+        SidenavService
       ]
     };
   }

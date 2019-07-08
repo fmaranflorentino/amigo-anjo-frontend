@@ -1,5 +1,22 @@
-<div class="logo"></div>
+<div class="container desk" [ngClass]="{ opened: sidenavState }">
+  <div class="logo"></div>
 
-<p>
-  sidenav works!
-</p>
+  <div class="menu-items-content">
+    <ul>
+      <li *ngFor="let item of menuItems; let i = index; trackBy: trackByMenu">
+        <a href="javascript:void()">
+          <mat-icon>
+            home
+          </mat-icon>
+          <span>
+            text
+          </span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="container mob">
+  
+</div>

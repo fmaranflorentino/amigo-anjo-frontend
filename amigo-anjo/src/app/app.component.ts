@@ -11,7 +11,11 @@ import { Subscription } from 'rxjs';
 export class AppComponent implements OnInit {
   title = 'amigo-anjo';
   sidenavState;
-  getState: Subscription
+  getState: Subscription;
+  swipeAction = { UP: 'swipeup', DOWN: 'swipedown' };
+
+  controlMenu = false;
+
 
   constructor(
     private sidenav$: SidenavService
@@ -37,4 +41,13 @@ export class AppComponent implements OnInit {
         error => { reject(error) };
     })
   }
+
+  swipe(action = this.swipeAction.UP) {
+    console.log('swipe')
+		if (action === this.swipeAction.UP) {
+      this.controlMenu = true;
+		} else if (action === this.swipeAction.DOWN) {
+      this.controlMenu = false;
+		}
+	}
 }

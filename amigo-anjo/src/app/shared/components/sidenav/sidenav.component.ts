@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { SidenavService } from '../../services/sidenav/sidenav.service';
 import { Subscription } from 'rxjs';
@@ -17,6 +17,7 @@ export class SidenavComponent implements OnInit {
     { id: 3 },
     { id: 4 }
   ];
+  @Input() directionShow;
 
   constructor(
     private sidenav$: SidenavService

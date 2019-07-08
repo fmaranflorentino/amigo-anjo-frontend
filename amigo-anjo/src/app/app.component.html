@@ -1,4 +1,4 @@
-<app-sidenav></app-sidenav>
+<app-sidenav [ngClass]="{'bigger': directionShow}" [directionShow]="controlMenu" (swipeup)="swipe($event.type)" (swipedown)="swipe($event.type)"></app-sidenav>
 
 <div class="app-container" [ngClass]="{ opened: sidenavState }">
   <app-header></app-header>

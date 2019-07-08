@@ -1,0 +1,15 @@
+
+app-header {
+    background: #fff;
+    border-bottom: 1px solid #ccc;
+
+    display: flex;
+    align-items: center;
+
+    position: fixed;
+    right: 0;
+    top: 0;
+
+    width: calc(100% - #{$sidenav-width});
+    height: $header-height;
+}

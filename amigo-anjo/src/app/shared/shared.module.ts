@@ -1,16 +1,39 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { HeaderComponent } from './components/header/header.component';
+
+import { MatButtonModule, MatIconModule } from '@angular/material';
+
+import { ApiService } from './services/api/api.service';
+import { DomService } from './services/dom/dom.service';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [SidenavComponent, HeaderComponent],
   imports: [
     CommonModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    MatButtonModule,
+    MatIconModule
+  ],
+  exports: [
+    SidenavComponent, HeaderComponent,
+    MatButtonModule,
+    MatIconModule
   ]
 })
-export class SharedModule { }
+export class SharedModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: SharedModule,
+      providers: [
+        ApiService,
+        DomService,
+      ]
+    };
+  }
+ }

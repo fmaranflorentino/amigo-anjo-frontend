@@ -1,0 +1,18 @@
+app-sidenav {
+  background: #fff;
+  border-right: 1px solid #ccc;
+
+  position: fixed;
+  left: 0;
+  top: 0;
+
+  width: $sidenav-width;
+  height: 100vh;
+
+  .logo {
+    border-bottom: 1px solid #ccc;
+
+    width: 100%;
+    height: $header-height;
+  }
+}

@@ -4,12 +4,20 @@
   <div class="menu-items-content">
     <ul>
       <li *ngFor="let item of menuItems; let i = index; trackBy: trackByMenu">
-        <a href="javascript:void()">
+        <a href="javascript:void(0)" [routerLink]="item.routerlink">
           <mat-icon>
-            home
+            {{
+              item.id === 1
+                ? "home"
+                : item.id === 2
+                ? "aspect_ratio"
+                : item.id === 3
+                ? "search"
+                : "accessibility_new"
+            }}
           </mat-icon>
-          <span>
-            text
+          <span @slideState *ngIf="sidenavState">
+            {{ item.label }}
           </span>
         </a>
       </li>
@@ -17,9 +25,4 @@
   </div>
 </div>
 
-<div
-  class="container mob"
-  [ngClass]="{'bigger': directionShow}"
->
-</div>
-
+<div class="container mob" [ngClass]="{ bigger: directionShow }"></div>

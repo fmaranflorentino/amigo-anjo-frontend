@@ -2,19 +2,23 @@ import { Component, OnInit } from '@angular/core';
 
 import { SidenavService } from './shared/services/sidenav/sidenav.service';
 import { Subscription } from 'rxjs';
+import { RouterOutlet } from '@angular/router';
+
+import { slideInAnimation } from './shared/animations/general';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  animations: [
+    slideInAnimation
+  ]
 })
 export class AppComponent implements OnInit {
-  title = 'amigo-anjo';
   sidenavState;
   getState: Subscription;
   swipeAction = { UP: 'swipeup', DOWN: 'swipedown' };
-
-  controlMenu = false;
+  gestureBehavior = false;
 
 
   constructor(
@@ -31,11 +35,12 @@ export class AppComponent implements OnInit {
 
   }
 
-  async getSidenavState() {
-    return new Promise(async (resolve, reject) => {
-      this.getState = await this.sidenav$.getState()
+  getSidenavState() {
+    return new Promise<boolean>(async (resolve, reject) => {
+      this.getState = await this.sidenav$
+        .getState()
         .subscribe((resp) => {
-          this.sidenavState = resp
+          this.sidenavState = resp;
           resolve();
         }),
         error => { reject(error) };
@@ -43,11 +48,14 @@ export class AppComponent implements OnInit {
   }
 
   swipe(action = this.swipeAction.UP) {
-    console.log('swipe')
-		if (action === this.swipeAction.UP) {
-      this.controlMenu = true;
-		} else if (action === this.swipeAction.DOWN) {
-      this.controlMenu = false;
-		}
-	}
+    if (action === this.swipeAction.UP) {
+      this.gestureBehavior = true;
+    } else if (action === this.swipeAction.DOWN) {
+      this.gestureBehavior = false;
+    }
+  }
+
+  prepareRoute(outlet: RouterOutlet) {
+    return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
+  }
 }

@@ -13,16 +13,15 @@ export class SidenavService {
     this.setInitialState(false);
   }
   
-  setInitialState(state: boolean) {
-    return new Promise(async (resolve, reject) => {
+  setInitialState(state: boolean): Promise<any> {
+    return new Promise(async (resolve) => {
 
      await this.getSideNavStatus.next(state);
       resolve();
     })
   }
 
- 
-  toggleSideNav() {
+  toggleSideNav(): void {
     this.sideNavState = !this.sideNavState;
 
     this.getSideNavStatus.next(this.sideNavState);

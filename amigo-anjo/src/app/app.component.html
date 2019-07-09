@@ -1,6 +1,15 @@
-<app-sidenav [ngClass]="{'bigger': directionShow}" [directionShow]="controlMenu" (swipeup)="swipe($event.type)" (swipedown)="swipe($event.type)"></app-sidenav>
+<app-sidenav
+  [ngClass]="{ bigger: directionShow }"
+  [directionShow]="gestureBehavior"
+  (swipeup)="swipe($event.type)"
+  (swipedown)="swipe($event.type)"
+></app-sidenav>
 
 <div class="app-container" [ngClass]="{ opened: sidenavState }">
   <app-header></app-header>
-  <router-outlet></router-outlet>
+
+  <div class="page-content" [@routeAnimations]="o && o.activatedRouteData 
+  && o.activatedRouteData['animation']">
+<router-outlet #o="outlet"></router-outlet>
+  </div>
 </div>

@@ -1,0 +1,28 @@
+<div class="container desk" [ngClass]="{ opened: sidenavState }">
+  <div class="logo"></div>
+
+  <div class="menu-items-content">
+    <ul>
+      <li *ngFor="let item of menuItems; let i = index; trackBy: trackByMenu">
+        <a href="javascript:void(0)" [routerLink]="item.routerlink">
+          <mat-icon>
+            {{
+              item.id === 1
+                ? "home"
+                : item.id === 2
+                ? "aspect_ratio"
+                : item.id === 3
+                ? "search"
+                : "accessibility_new"
+            }}
+          </mat-icon>
+          <span @slideState *ngIf="sidenavState">
+            {{ item.label }}
+          </span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="container mob" [ngClass]="{ bigger: directionShow }"></div>

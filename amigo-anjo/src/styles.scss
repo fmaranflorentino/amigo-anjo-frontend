@@ -1,1 +1,24 @@
-/* You can add global styles to this file, and also import other style files */
+@import "./assets/scss/reset";
+@import "./assets/scss/utils/variables";
+
+@import "./assets/scss/pages/base";
+
+@import "./assets/scss/components/header";
+@import "./assets/scss/components/sidenav";
+
+@import "./assets/scss/theme/theme";
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.bigger {
+  transition: all 0.3s ease-in;
+
+  height: 300px !important;
+}
